@@ -1,0 +1,64 @@
+MongoDB queries practice questions with solutions:
+
+Use the below website for querying pratice and navigate to the template "Multiple Collections": https://mongoplayground.net/
+
+Query pratice questions:
+
+1. Find all the almonds orders from the orders collection:
+
+db.orders.find({
+  "item": "almonds"
+})
+
+2. Update the instock quantity of cashews in inventory collection to 80:
+
+db.inventory.update({
+  "sku": "cashews"
+},
+{
+  $set: {
+    "instock": 80
+  }
+})
+
+3. Find the item almonds in inventory and display only it's name and instock quantity:
+
+db.inventory.find({
+  "sku": "almonds"
+},
+{
+  "instock": 1,
+  "sku": 1,
+  "_id": 0
+})
+
+4. Find the items which have more than 100 instock quantity:
+
+db.inventory.find({
+  "instock": {
+    $gt: 100
+  }
+})
+
+5.Querying below 10 items orders: 
+Find the orders whose quantity greater than or equal to 1 and lesser than or equal to 10:
+(here you can manually update the document with _id=3 in orders collection with the below details in the left hand side pane) and then do the querying:
+
+{
+      "_id": 3,
+      "item":"beans",
+      "price":50,
+      "quantity":15
+    }
+
+  Solution:
+
+  db.orders.find({
+  "quantity": {
+    $gte: 1,
+    $lt: 10
+  }
+})
+
+
+
