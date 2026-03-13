@@ -2,7 +2,7 @@ MongoDB queries practice questions with solutions:
 
 Use the below website for querying pratice and navigate to the template "Multiple Collections": https://mongoplayground.net/
 
-Query pratice questions:
+Query pratice questions-Basic:
 
 1. Find all the almonds orders from the orders collection:
 
@@ -58,6 +58,36 @@ Find the orders whose quantity greater than or equal to 1 and lesser than or equ
     $gte: 1,
     $lt: 10
   }
+})
+
+6. Making use of the below sample data, manually update the warehouse locations in all the documents in Inventory collection:
+
+ "wh_location": {
+    "city": "bangalore",
+    "state": "karnataka",
+    "country": "india"
+  }
+
+  and then query the products instock for the city "Hubli":
+
+  db.inventory.find({
+  "wh_location.city": "hubli"
+})
+
+
+Query pratice questions-Intermediate:
+
+7. Find the inventory documents where one of the suppliers is 1001 after updating the documents using the below sample data:
+
+"supplier IDs": [
+        1001,
+        1030
+      ]
+
+  Solution:
+
+db.inventory.find({
+  "supplier IDs": 1001
 })
 
 
