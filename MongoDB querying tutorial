@@ -90,5 +90,27 @@ db.inventory.find({
   "supplier IDs": 1001
 })
 
+8. Retrieve orders made in the month of January 2026 by updating the documents using the below sample data in orders collection:
+
+  {
+      "_id": 1,
+      "item": "almonds",
+      "price": 12,
+      "quantity": 2,
+      "date_ordered": ISODate("2026-01-23"),
+    }
+
+Solution:
+
+    db.orders.find({
+  "date_ordered": {
+    $gte: ISODate("2026-01-01"),
+    $lte: ISODate("2026-01-31")
+  }
+})
+
+
+
+
 
 
