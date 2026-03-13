@@ -1,6 +1,7 @@
 MongoDB queries practice questions with solutions:
 
 Use the below website for querying pratice and navigate to the template "Multiple Collections": https://mongoplayground.net/
+Note that this playground supports querying only the following commands: Update, Find, Aggregate
 
 Query pratice questions-Basic:
 
@@ -108,6 +109,24 @@ Solution:
     $lte: ISODate("2026-01-31")
   }
 })
+
+9. Calculate the total sales made by aggregating the price*quantity(sales amount) from the orders collection:
+
+db.orders.aggregate({
+  $group: {
+    _id: null,
+    total: {
+      $sum: {
+        $multiply: [
+          "$price",
+          "$quantity"
+        ]
+      }
+    }
+  }
+})
+
+
 
 
 
