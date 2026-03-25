@@ -144,6 +144,16 @@ db.orders.aggregate({
 })
 
 
+11. Find all inventory items whose productname is not "almonds":
+
+db.inventory.find({
+  "sku": {
+    $ne: "almonds"
+  }
+})
+
+
+
 
 
 
